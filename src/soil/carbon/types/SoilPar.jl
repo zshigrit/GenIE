@@ -4,7 +4,7 @@ Base.@kwdef mutable struct SoilPar
     fINP::Float64 = 0.3
     vd_pomo::Float64   = 50.0
     vd_pomh::Float64   = 50.0
-    vd_mom::Float64    = vd_pomh * 0.01
+    vd_mom::Float64    = vd_pomh
     ks_pomo::Float64   = 60.0
     fKM::Float64       = 10.0
     ks_pomh::Float64   = ks_pomo/fKM

@@ -46,7 +46,7 @@ module Nitrogen
 
     # model timespan
     nyear=10;
-    ncycle=1;
+    ncycle=10;
 
     ## initial parameters 
     par     = SoilPar();

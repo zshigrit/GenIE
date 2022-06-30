@@ -9,10 +9,12 @@ function CPools!(par::SoilPar,pools::Pools,inp_pools::Pools,fluxes::Fluxes,input
 
     pomo_dec = MM(par,inp_pools,Flux_POMo); pomh_dec = MM(par,inp_pools,Flux_POMh);
     mom_dec = MM(par,inp_pools,Flux_MOM); dom_dec = MM(par,inp_pools,Flux_DOM);
+    # println(mom_dec)
 
     pomo_dom,pomo_mom = Flux!(par,inp_pools,fluxes,Flux_POMo)
     pomh_dom,pomh_mom = Flux!(par,inp_pools,fluxes,Flux_POMh)
     dom_mba, dom_qom, qom_dom = Flux!(par,inp_pools,fluxes,Flux_DOM)
+    Flux!(par,inp_pools,fluxes,Flux_MOM)
     
     mba_mortality, mba_dom, mba_pomo, mba_pomh,
     mba_mbd, mba_CO2_growth, mba_CO2_maintn = 

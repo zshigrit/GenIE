@@ -27,7 +27,7 @@ function Flux!(par::SoilPar,pools::Pools,flux::Fluxes,::Type{Flux_MOM})
     mom_dom      = mom_dec
 
     flux.mom_dom = mom_dom
-    return mom_dom 
+    return nothing #mom_dom 
 end
 
 function Flux!(par::SoilPar,pools::Pools,flux::Fluxes,::Type{Flux_DOM})
