@@ -103,25 +103,25 @@ module Nitrogen
     soc_total = output_pools.cPOMo + output_pools.cPOMh + output_pools.cMOM + output_pools.cDOM 
     x=1:length(soc_total); y = soc_total[1:end] 
     plot(x[1:end], y,label=false)
-    savefig("soc_test12.png")
+    savefig("soc_test1212.png")
 
     # output[:,"nSOM"] = output[:,"nPOMh"] + output[:,"nPOMo"] + output[:,"nMOM"];
     soc_total = output_pools.nPOMo + output_pools.nPOMh + output_pools.nMOM + output_pools.nDOM 
     x=1:length(soc_total); y = soc_total[1:end] 
     plot(x[1:end], y,label=false)
-    savefig("son_test12.png")
+    savefig("son_test1212.png")
     
     soc_total = output_pools.cPOMo + output_pools.cPOMh + output_pools.cMOM + output_pools.cDOM 
     x=1:length(soc_total); y = soc_total[1:end] 
     plot(x[1:end], y,label=false)
-    savefig("soc_test12.png")
+    savefig("soc_test1212.png")
 
     co2_flux = output_fluxes.co2_maintn_mba + output_fluxes.co2_growth + output_fluxes.co2_maintn_mbd
     x=1:length(co2_flux); y = co2_flux[1:end] 
     plot(x[1:end], y,label=false)
-    savefig("flux_test.png")
+    savefig("flux_test1212.png")
 
     x=1:length(output_fluxes.pomo_mom); y = output_fluxes.pomo_mom[1:end] 
     plot(x[1:end], y,label=false)
-    savefig("flux_pomo_mom.png")
+    savefig("flux_pomo_mom1212.png")
 end # module
