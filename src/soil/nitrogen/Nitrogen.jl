@@ -46,7 +46,7 @@ module Nitrogen
 
     # model timespan
     nyear=10;
-    ncycle=10;
+    ncycle=1;
 
     ## initial parameters 
     par     = SoilPar();
@@ -87,16 +87,10 @@ module Nitrogen
     input_c::DataFrame,output_pools::DataFrame,output_fluxes::DataFrame
     )   
 
-    # ModRunSL!(par,cpools,cfluxes,input_c,output)
+    ## model output 
 
     CSV.write("output_pools.csv", output_pools)
     CSV.write("output_fluxes.csv", output_fluxes)
-
-    # println(par_der.SWCFC)
-    # println(par_der.fNO3_Leaching)
-    # println(TMP,SWC,par_add.porosity,par_der.SWCFC,
-    # par_add.Ksat,par_add.Lambda,par.rNleach,par_add.SoilDepth)
-
 
     ## plots
     # output[:,"cSOM"] = output[:,"cPOMh"] + output[:,"cPOMo"] + output[:,"cMOM"];
