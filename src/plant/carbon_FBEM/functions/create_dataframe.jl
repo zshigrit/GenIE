@@ -8,7 +8,7 @@ df = DataFrame();
 df[!, "tair"] = weather.tair;
 df[!, "rh"]    .= FT(0);
 df[!, "D_air"] .= FT(0);
-df[!, "rad"] .= FT(0);
+df[!, "irradiance"] .= FT(0);
 df[!, "apar"] .= FT(0);
 
 df[!, "LAI"] .= FT(0);

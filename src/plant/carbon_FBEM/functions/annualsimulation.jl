@@ -25,9 +25,12 @@ for i in eachindex(_weather.tair)
     leaf_temperature_dependence!(leaf, weather.TaK)
     canopy_photosynthesis!(leaf, can, weather)
 
-    output[i,"Ac"] = can.Ac 
-    output[i,"Reco"] = can.Reco 
-    output[i,"NEE"] = can.NEE
+    output[i,"apar"] = weather.I;
+    output[i,"D_air"] = weather.D; 
+    output[i,"LAI"] = can.lai;
+    output[i,"Ac"] = can.Ac; 
+    output[i,"Reco"] = can.Reco; 
+    output[i,"NEE"] = can.NEE;
 end
 return nothing 
 end 

@@ -18,7 +18,8 @@ Gs = g1*Al/((Cs-Γ_star)*(FT(1)+D/D0)); # canopy stomatal conductance
 An = Gs*(Cs-Ci); # top layer canopy photosynthesis 
 Ac = An * (FT(1)-exp(-kn*lai))/kn; # canopy photosynthesis 
 
-Reco = Reco0*Q10^(TaK/FT(10))*(swc/(swc+a1));
+_Ta = TaK - FT(273.15);
+Reco = Reco0*Q10^(_Ta/FT(10))*(swc/(swc+a1));
 NEE = Reco - Ac; 
 
 can.Ac = Ac; 
