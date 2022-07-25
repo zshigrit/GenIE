@@ -1,7 +1,14 @@
 Base.@kwdef mutable struct Leaf{FT<:AbstractFloat}
 
     "vcmax@25° μmol m⁻² s⁻¹"
-    Vm25::FT = 100
+    Vm25::FT = 100 
+    """
+    where N_{cb} is nitrogen for carboxylation (g N m-2 leaf, Table 2.10.1), 
+    and NUE_{V_{c\max 25}} = 47.3 x 6.25 and is the nitrogen use efficiency for V_{c\max 25}. 
+    The constant 47.3 is the specific Rubisco activity ( \mu mol CO2 g-1 Rubisco s-1) measured at 25oC, 
+    and the constant 6.25 is the nitrogen binding factor for Rubisco (g Rubisco g-1 N; Rogers 2014).
+    """
+    # Vm25 = Ncb*NUEᵥₘ₂₅ 
     "vcmax: μmol m⁻² s⁻¹ (initially zero)"
     Vm::FT = 0
     "fraction of Ca to derive Ci"
