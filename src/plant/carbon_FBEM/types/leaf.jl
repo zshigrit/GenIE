@@ -7,6 +7,9 @@ Base.@kwdef mutable struct Leaf{FT<:AbstractFloat}
     and NUE_{V_{c\max 25}} = 47.3 x 6.25 and is the nitrogen use efficiency for V_{c\max 25}. 
     The constant 47.3 is the specific Rubisco activity ( \mu mol CO2 g-1 Rubisco s-1) measured at 25oC, 
     and the constant 6.25 is the nitrogen binding factor for Rubisco (g Rubisco g-1 N; Rogers 2014).
+    Ncb = 0.13; 
+    The photosynthetic nitrogen, N_{\text{psn}}, is further divided into nitrogen for light capture ( N_{\text{lc}}; gN/m 2 leaf), 
+    nitrogen for electron transport ( N_{\text{et}}; gN/m 2 leaf), and nitrogen for carboxylation ( N_{\text{cb}}; gN/m 2 leaf). Namely,
     """
     # Vm25 = Ncb*NUEᵥₘ₂₅ 
     "vcmax: μmol m⁻² s⁻¹ (initially zero)"
