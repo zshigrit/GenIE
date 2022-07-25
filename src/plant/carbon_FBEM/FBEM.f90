@@ -61,11 +61,11 @@ program main
         !print*,'Vm=',Vm, 'A=',A
         !print*,'Gs=',Gs, 'D=',D
         !print*,'Jc=',Jc,'Je=',Je
-        !print*,'Reco=',Reco,'Ac=',Ac
+        print*,'Reco=',Reco,'Ac=',Ac
         !print*,'An=',An,'NEE= ',NEE
 
-        print*,'header: ', header1
-        print*,'header2: ',head2
+        ! print*,'header: ', header1
+        ! print*,'header2: ',head2
         ! print*,'header3: ',header3
         ! print*,head1,head2,head3
         ! print*, trim(header1),',', trim(header2),',', trim(header3)
