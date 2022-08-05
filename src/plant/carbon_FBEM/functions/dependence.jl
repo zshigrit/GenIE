@@ -14,11 +14,11 @@ function leaf_temperature_dependence!(
     leaf::Leaf{FT},
     Tk::FT   
 ) where {FT<:AbstractFloat}
-leaf.Vm = leaf.Vm25 * Arrhenius(leaf.Ea_Vm, Rgas, Tk);
-leaf.Γ_star = leaf.Γ_star25 * Arrhenius(leaf.Ea_Γ, Rgas, Tk);
-leaf.Kc = leaf.Kc25 * Arrhenius(leaf.Ea_Kc, Rgas, Tk);
-leaf.Ko = leaf.Ko25 * Arrhenius(leaf.Ea_Ko, Rgas, Tk);
-leaf.Jm = leaf.r_JmVm * leaf.Vm
-return nothing
+    leaf.Vm = leaf.Vm25 * Arrhenius(leaf.Ea_Vm, Rgas, Tk);
+    leaf.Γ_star = leaf.Γ_star25 * Arrhenius(leaf.Ea_Γ, Rgas, Tk);
+    leaf.Kc = leaf.Kc25 * Arrhenius(leaf.Ea_Kc, Rgas, Tk);
+    leaf.Ko = leaf.Ko25 * Arrhenius(leaf.Ea_Ko, Rgas, Tk);
+    leaf.Jm = leaf.r_JmVm * leaf.Vm
+    return nothing
 
 end

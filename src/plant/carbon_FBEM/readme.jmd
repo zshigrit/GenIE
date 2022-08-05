@@ -1,0 +1,12 @@
+# running nitrogenlimitation!()
+1. comment out three lines for computing nitrogen_supply to  test code; make nitrogen_supply = 0.85*nitrogen_demand; **need to convert $\beta$
+## 2. not working as expected. 
+## 3. works; now connect nitrogen_suplly with soil N module
+
+
+
+<!-- Table example
+| Syntax | Description |
+| ----------- | ----------- |
+| Header | Title |
+| Paragraph | Text | -->

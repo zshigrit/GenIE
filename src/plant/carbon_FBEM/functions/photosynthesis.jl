@@ -15,14 +15,16 @@ Je = (α_q*I*Jm/(sqrt(Jm^FT(2)+α_q^FT(2)*I^FT(2)))) *
 Al = min(Jc,Je); # leaf photosynthesis
 
 Gs = g1*Al/((Cs-Γ_star)*(FT(1)+D/D0)); # canopy stomatal conductance
-An = Gs*(Cs-Ci); # top layer canopy photosynthesis 
+lai > FT(0) ? An = Gs*(Cs-Ci) : An = FT(0); # top layer canopy photosynthesis 
 Ac = An * (FT(1)-exp(-kn*lai))/kn; # canopy photosynthesis 
 
 _Ta = TaK - FT(273.15);
 Reco = Reco0*Q10^(_Ta/FT(10))*(swc/(swc+a1));
 NEE = Reco - Ac; 
 
+leaf.Cs = Cs; 
 can.Ac = Ac; 
+can.An = An;
 can.Reco = Reco;
 can.NEE = NEE;
 

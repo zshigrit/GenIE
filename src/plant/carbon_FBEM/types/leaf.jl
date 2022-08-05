@@ -1,17 +1,31 @@
 Base.@kwdef mutable struct Leaf{FT<:AbstractFloat}
 
     "vcmax@25° μmol m⁻² s⁻¹"
-    Vm25::FT = 100 
-    """
-    where N_{cb} is nitrogen for carboxylation (g N m-2 leaf, Table 2.10.1), 
-    and NUE_{V_{c\max 25}} = 47.3 x 6.25 and is the nitrogen use efficiency for V_{c\max 25}. 
-    The constant 47.3 is the specific Rubisco activity ( \mu mol CO2 g-1 Rubisco s-1) measured at 25oC, 
-    and the constant 6.25 is the nitrogen binding factor for Rubisco (g Rubisco g-1 N; Rogers 2014).
-    Ncb = 0.13; 
-    The photosynthetic nitrogen, N_{\text{psn}}, is further divided into nitrogen for light capture ( N_{\text{lc}}; gN/m 2 leaf), 
-    nitrogen for electron transport ( N_{\text{et}}; gN/m 2 leaf), and nitrogen for carboxylation ( N_{\text{cb}}; gN/m 2 leaf). Namely,
-    """
-    # Vm25 = Ncb*NUEᵥₘ₂₅ 
+    # Vm25::FT = 100 
+
+    # """
+    # where N_{cb} is nitrogen for carboxylation (g N m-2 leaf, Table 2.10.1), 
+    # and NUE_{V_{c\max 25}} = 47.3 x 6.25 and is the nitrogen use efficiency for V_{c\max 25}. 
+    # The constant 47.3 is the specific Rubisco activity ( \mu mol CO2 g-1 Rubisco s-1) measured at 25oC, 
+    # and the constant 6.25 is the nitrogen binding factor for Rubisco (g Rubisco g-1 N; Rogers 2014).
+    # Ncb = 0.13; 
+    # The photosynthetic nitrogen, N_{\text{psn}}, is further divided into nitrogen for light capture ( N_{\text{lc}}; gN/m 2 leaf), 
+    # nitrogen for electron transport ( N_{\text{et}}; gN/m 2 leaf), and nitrogen for carboxylation ( N_{\text{cb}}; gN/m 2 leaf). Namely,
+    # """
+    
+    Ncb0::FT = 0.13
+    Ncb::FT = 0 # Ncb = Ncb0 * (rCN0/rCN)
+    NUEᵥₘ₂₅::FT = 47.3 * 6.25
+    Vm25::FT = Ncb0*NUEᵥₘ₂₅ # will be modified by Ncb 
+    "leaf biomass (g); * 0.45 for carbon"
+    bm::FT = 0 # lai / sla
+    bm_c::FT = 0 # bm*0.45 leaf carbon 
+    bm_n::FT = 0 # leaf nitrogen
+    "initial leaf CN ratio"
+    rCN0::FT = 20
+    rCN::FT  = 20
+    "specific leaf area m²/g"
+    sla::FT = 0.0085 # from TECO 
     "vcmax: μmol m⁻² s⁻¹ (initially zero)"
     Vm::FT = 0
     "fraction of Ca to derive Ci"
