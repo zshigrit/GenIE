@@ -4,4 +4,5 @@ Base.@kwdef mutable struct Weather{FT<:AbstractFloat}
     D::FT = 0 # water pressure deficit
     swc::FT = 0 #  soil water content 
     TaK::FT = 0 # air temperature in Kelvin
+    Ts::FT = 0 # soil temperature in ᵒC
 end

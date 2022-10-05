@@ -5,6 +5,8 @@ Base.@kwdef mutable struct Canopy{FT<:AbstractFloat}
     D0::FT = 2.74
     "Gs: canopy conductance"
     Gs::FT = 0 
+    "nitrogen uptake rate"
+    N_uptake::FT = 0
     "light extinction rate for computing lower level GPP"
     kn::FT = 0.8
     "baseline ecosystem respiration @25°"
@@ -17,7 +19,7 @@ Base.@kwdef mutable struct Canopy{FT<:AbstractFloat}
     lai::FT = 0 
     "canopy photosynthesis (μmol m⁻² s⁻¹)"
     Ac::FT = 0
-    "net canopy photosynthesis (μmol m⁻² s⁻¹)"
+    "top layer canopy photosynthesis (μmol m⁻² s⁻¹)"
     An::FT = 0
     "ecosystem respiration (μmol m⁻² s⁻¹)"
     Reco::FT = 0
