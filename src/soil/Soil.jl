@@ -12,6 +12,9 @@ module SoilMod
     export SoilPar, Fluxes, Pools, vanGenuchtenPar
     export Flux_POMo, Flux_POMh, Flux_MOM, Flux_DOM, Flux_MBA, Flux_MBD
     export abs_pools, abs_fluxes    
+    export AddPar, DerPar, Enzyme_N, MNPools, Soil  
+
+
     # export public functions 
     export InitCPools, InitCFluxes, InitCInputs, inp_gpp, inp_swc, inp_stp, inp_ph 
     export MM, Flux!, CPools!, EnzymeProduction, EnzymeTurnover, create_dataframe
@@ -19,46 +22,43 @@ module SoilMod
     export TMPdep!, SWCdep!, PHdep!
     # export ModRunSL!
     
-    export AddPar, DerPar, Enzyme_N, MNPools  
     export ENZNm,fNLimit_MB,NFixNitDen,fGasEfflux,NH4sorption!,NImmob,NO3NO2Leaching!,NPools!,fO2_scalar
     export Overflow!,Rcn
 
-    include("carbon/types/SoilPar.jl")
-    include("carbon/types/Fluxes.jl")
-    include("carbon/types/Pools.jl")
-    include("carbon/types/EmptyStruct.jl")
-    include("carbon/types/vanGenuchtenPar.jl")
+    include("types/SoilPar.jl")
+    include("types/Fluxes.jl")
+    include("types/Pools.jl")
+    include("types/EmptyStruct.jl")
+    include("types/vanGenuchtenPar.jl")
 
-    include("carbon/functions/WaterDependency.jl")
-    include("carbon/functions/MM.jl")
-    include("carbon/functions/Enzyme.jl")
-    include("carbon/functions/Flux.jl")
-    include("carbon/functions/Pool.jl")
-    include("carbon/functions/InitModel.jl")
-    # include("functions/Model.jl")
-    include("carbon/functions/Outputs.jl")
-    # include("functions/Plot.jl")
-    include("carbon/functions/TemDependency.jl")
-    include("carbon/functions/WaterDependency.jl")
-    include("carbon/functions/PhDependency.jl")
+    include("carbon/WaterDependency.jl")
+    include("carbon/MM.jl")
+    include("carbon/Enzyme.jl")
+    include("carbon/Flux.jl")
+    include("carbon/Pool.jl")
+    include("carbon/InitModel.jl")
+    include("carbon/Outputs.jl")
+    include("carbon/TemDependency.jl")
+    include("carbon/WaterDependency.jl")
+    include("carbon/PhDependency.jl")
 
-    include("nitrogen/types/AddPar.jl")
-    include("nitrogen/types/DerPar.jl")
-    include("nitrogen/types/DiffusivityPar.jl")
-    include("nitrogen/types/Enzyme_N.jl")
-    include("nitrogen/types/MNPools.jl")
+    include("types/AddPar.jl")
+    include("types/DerPar.jl")
+    include("types/DiffusivityPar.jl")
+    include("types/Enzyme_N.jl")
+    include("types/MNPools.jl")
 
-    include("nitrogen/functions/ENZNm.jl")
-    include("nitrogen/functions/fNLimit_MB.jl")
-    include("nitrogen/functions/InitModel.jl")
-    include("nitrogen/functions/NFixNitDen.jl")
-    include("nitrogen/functions/NGas.jl")
-    include("nitrogen/functions/NH4sorption.jl")
-    include("nitrogen/functions/NImmob.jl")
-    include("nitrogen/functions/NO3NO2Leaching.jl")
-    include("nitrogen/functions/NPool.jl")
-    include("nitrogen/functions/O2scalar.jl")
-    include("nitrogen/functions/Overflow.jl")
-    include("nitrogen/functions/Rcn.jl")
+    include("nitrogen/ENZNm.jl")
+    include("nitrogen/fNLimit_MB.jl")
+    include("nitrogen/InitModel.jl")
+    include("nitrogen/NFixNitDen.jl")
+    include("nitrogen/NGas.jl")
+    include("nitrogen/NH4sorption.jl")
+    include("nitrogen/NImmob.jl")
+    include("nitrogen/NO3NO2Leaching.jl")
+    include("nitrogen/NPool.jl")
+    include("nitrogen/O2scalar.jl")
+    include("nitrogen/Overflow.jl")
+    include("nitrogen/Rcn.jl")
 
 end 
