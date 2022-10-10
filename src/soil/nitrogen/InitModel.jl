@@ -45,7 +45,7 @@ function InitNPools(ini_cpools::Pools,par::AddPar)
     return npools, mnpools, enzyme_c, enzyme_n
 end
 
-function InitCN()
+function InitCN(par_add::AddPar)
     cpools  = InitCPools();
     @unpack POMo,POMh,MOM,DOM,QOM,MBA,MBD,EPO,EPH,EM = cpools
     poc_o,poc_h,moc,doc,qoc,mbc_a,mbc_d,epo,eph,em = POMo,POMh,MOM,DOM,QOM,MBA,MBD,EPO,EPH,EM

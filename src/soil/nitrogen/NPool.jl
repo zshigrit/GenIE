@@ -6,7 +6,8 @@ function NPools!(
     par::SoilPar,par_add::AddPar,par_der::DerPar,vG::vanGenuchtenPar,
     cpools::Pools,npools::Pools,rCN::Pools,mnpools::MNPools,
     cfluxes::Fluxes,enzymes_n::Enzyme_N,enzymes_c::Enzyme_N,input_c,
-    inp_cpools, inp_npools, inp_rCN, inp_mnpools, inp_enzymes_c, inp_enzymes_n
+    inp_cpools, inp_npools, inp_rCN, inp_mnpools, inp_enzymes_c, inp_enzymes_n,
+    GPP,SWC,TMP,PH
 )
 
     @unpack POMo,POMh,MOM,DOM,QOM,MBA,MBD,EPO,EPH,EM = cpools

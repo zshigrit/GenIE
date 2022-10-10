@@ -7,6 +7,7 @@ function annual_simulation!(
     output::DataFrame
 ) where {FT<:AbstractFloat}
 
+
     for i in eachindex(_weather.tair)
         _tairK ::FT = _weather.tair[i] + FT(273.15); 
         _rh   ::FT = _weather.RH[i]/FT(100); 
@@ -24,24 +25,22 @@ function annual_simulation!(
         
         iday = div((i+24),24);
         
-#        leaf_temperature_dependence!(leaf, weather.TaK)
-        canopy_photosynthesis!(leaf, can, weather)
-#        nitrogen_limitation!(leaf, can, _lai, iday)
-	som_decomposition!(soil,plant,weather)
+        plantsoilcn!(soil,plant,weather,_lai,iday)
         
-
-	output[i,"Cs"] = leaf.Cs;
-        output[i,"bm_c"] = leaf.bm_c;
-        output[i,"bm_n"] = leaf.bm_n;
-        output[i,"rCN"] = leaf.rCN;
-        output[i,"Vm25"] = leaf.Vm25; 
-        output[i,"apar"] = weather.I;
-        output[i,"D_air"] = weather.D; 
-        output[i,"LAI"] = can.lai;
-        output[i,"Ac"] = can.Ac; 
-        output[i,"An"] = can.An;
-        output[i,"Reco"] = can.Reco; 
-        output[i,"NEE"] = can.NEE;
+#        output[i,"Cs"] = leaf.Cs;
+#        output[i,"bm_c"] = leaf.bm_c;
+#        output[i,"bm_n"] = leaf.bm_n;
+#        output[i,"rCN"] = leaf.rCN;
+#        output[i,"Vm25"] = leaf.Vm25; 
+#        output[i,"apar"] = weather.I;
+#        output[i,"D_air"] = weather.D; 
+#        output[i,"LAI"] = can.lai;
+#        output[i,"Ac"] = can.Ac; 
+#        output[i,"An"] = can.An;
+#        output[i,"Reco"] = can.Reco; 
+#        output[i,"NEE"] = can.NEE;
     end
+   
+
     return nothing 
 end 
