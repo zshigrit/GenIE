@@ -1,21 +1,22 @@
 ##4 developing functions: nitrogen pools 
 """
 note: NH4/NO3 deposition has not been added!
+gpp: here has been converted to mg/cm2/h
 """
-function NPools!(
+function NPools!(soil::Soil,
     par::SoilPar,par_add::AddPar,par_der::DerPar,vG::vanGenuchtenPar,
     cpools::Pools,npools::Pools,rCN::Pools,mnpools::MNPools,
     cfluxes::Fluxes,enzymes_n::Enzyme_N,enzymes_c::Enzyme_N,input_c,
     inp_cpools, inp_npools, inp_rCN, inp_mnpools, inp_enzymes_c, inp_enzymes_n,
-    GPP,SWC,TMP,PH
+    GPP,SWC,TMP
 )
 
     @unpack POMo,POMh,MOM,DOM,QOM,MBA,MBD,EPO,EPH,EM = cpools
     @unpack CN_MB_min,CN_MB_max,f_l_pomo,f_l_pomh,f_l_dom,rCN_LIG2LAB,CN_LITT_avg,CN_ENZP,CN_ENZM = par_add
 
-    litter_pomo = input_c.litter_pomo_array/par_der.CN_LITT_POMo
-    litter_pomh = input_c.litter_pomh_array/par_add.CN_LITT_POMh
-    litter_dom = input_c.litter_dom_array/par_der.CN_LITT_DOM
+    litter_pomo = input_c[1]/par_der.CN_LITT_POMo
+    litter_pomh = input_c[2]/par_add.CN_LITT_POMh
+    litter_dom = input_c[3]/par_der.CN_LITT_DOM
 
     pomo_dec = MM(par,inp_cpools,Flux_POMo)/inp_rCN.POMo; 
     pomh_dec = MM(par,inp_cpools,Flux_POMh)/inp_rCN.POMh;
@@ -51,6 +52,7 @@ function NPools!(
     # immobilization: first time
     Nim_NH4,Nim_NO3,Nim = NImmob(par,inp_mnpools,inp_npools,phi) # microbes
     Nim_NH4_VG,Nim_NO3_VG,Nim_VG = NImmob(par,par_add,inp_mnpools,GPP) # plants 
+    soil.Nuptake = Nim_VG
     
 # ============= organic nitrogen balance ====================
     npools.POMo = inp_npools.POMo - pomo_dec + mba_pomo + litter_pomo

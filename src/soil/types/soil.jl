@@ -1,8 +1,8 @@
-mutable struct Soil{FT}
+mutable struct Soil
 	par::SoilPar
 	par_add::AddPar
 	par_der::DerPar
-	pH::FT
+	pH::Float64 
 	vG::vanGenuchtenPar
 	OC::Pools
 	ON::Pools
@@ -12,4 +12,5 @@ mutable struct Soil{FT}
 	enzymes_n::Enzyme_N
 	CFlux::Fluxes
 	NFlux::Fluxes
+	Nuptake::Float64
 end

@@ -1,17 +1,17 @@
-mutable struct MNPools{FT<:AbstractFloat}
-    Nmine::FT   # [mg N/g soil]
-    Nmine_Free::FT  # all mineral N except NH4ads
-    Nmine_Solid ::FT
-    NH4tot ::FT
-    NH4ads ::FT
-    NH4 ::FT 
-    NOx ::FT
-    NO32 ::FT 
-    NO3 ::FT 
-    NO2  ::FT 
-    NO ::FT
-    N2O ::FT 
-    N2 ::FT 
-    NGas ::FT
+Base.@kwdef mutable struct MNPools{FT<:AbstractFloat}
+    Nmine::FT = 0.0   # [mg N/g soil]
+    Nmine_Free::FT = 0.0  # all mineral N except NH4ads
+    Nmine_Solid ::FT = 0.0
+    NH4tot ::FT = 0.0
+    NH4ads ::FT = 0.0
+    NH4 ::FT = 0.0
+    NOx ::FT = 0.0
+    NO32 ::FT = 0.0
+    NO3 ::FT = 0.0
+    NO2  ::FT = 0.0
+    NO ::FT = 0.0
+    N2O ::FT = 0.0
+    N2 ::FT = 0.0
+    NGas ::FT = 0.0
 end
 

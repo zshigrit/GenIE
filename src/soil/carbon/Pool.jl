@@ -3,9 +3,9 @@
 function CPools!(par::SoilPar,pools::Pools,inp_pools::Pools,fluxes::Fluxes,input_c)
     @unpack POMo,POMh,MOM,DOM,QOM,MBA,MBD,EPO,EPH,EM = inp_pools
     # @unpack EPO,EPH,EM = pools
-    litter_pomo = input_c.litter_pomo_array
-    litter_pomh = input_c.litter_pomh_array
-    litter_dom = input_c.litter_dom_array
+    litter_pomo = input_c[1]
+    litter_pomh = input_c[2]
+    litter_dom = input_c[3]
 
     pomo_dec = MM(par,inp_pools,Flux_POMo); pomh_dec = MM(par,inp_pools,Flux_POMh);
     mom_dec = MM(par,inp_pools,Flux_MOM); dom_dec = MM(par,inp_pools,Flux_DOM);

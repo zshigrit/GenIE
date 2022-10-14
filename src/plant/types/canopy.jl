@@ -16,7 +16,7 @@ Base.@kwdef mutable struct Canopy{FT<:AbstractFloat}
     "moisture coefficient at which respiratio is half the maximum "
     a1::FT = 0.1
     "leaf area index m2/m2"
-    lai::FT = 0 
+    lai::FT = 0.0
     "canopy photosynthesis (μmol m⁻² s⁻¹)"
     Ac::FT = 0
     "top layer canopy photosynthesis (μmol m⁻² s⁻¹)"
