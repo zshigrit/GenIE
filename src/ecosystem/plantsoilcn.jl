@@ -11,20 +11,20 @@ function plantsoilcn!(
 	iday::Int
 )
 	leaf_temperature_dependence!(plant.leaf, weather.TaK)
+	nitrogen_limitation!(plant.leaf, plant.canopy, soil.Nuptake, lai, iday)
     canopy_photosynthesis!(plant.leaf, plant.canopy, weather)
-    nitrogen_limitation!(plant.leaf, plant.canopy, soil.Nuptake, lai, iday)
-	
+    
     plant.gpp = plant.canopy.Ac * umol2mgC; # converted to mgC/cm2/h
 	gpp2soil!(plant,soil)
 
-	par_base = deepcopy(soil.par);
+	# par_base = deepcopy(soil.par);
 	inputC2Soil = plant.inputC2Soil;
 	gpp = plant.gpp;
 	swc = weather.swc;
 	tmp = weather.Ts;
 	pH = soil.pH; 
 
-	TMPdep!(soil.par,tmp)
+	TMPdep!(soil,tmp)
 	SWCdep!(par_base,soil.par,swc,soil.vG,biome,som)
 	PHdep!(soil.par,pH)
 	
@@ -37,6 +37,6 @@ function plantsoilcn!(
 		soil.MN,soil.CFlux,soil.enzymes_n,soil.enzymes_c,inputC2Soil,
 		inp_cpools,inp_npools,inp_rCN,inp_mnpools,inp_enzymes_c,inp_enzymes_n,
 		gpp,swc,tmp)
-	rCN=Rcn(soil.OC,soil.ON)
+	soil.rCN=Rcn(soil.OC,soil.ON)
 
 end
