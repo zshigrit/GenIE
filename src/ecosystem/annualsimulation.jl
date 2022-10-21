@@ -11,7 +11,7 @@ function annual_simulation!(
     output_pools::DataFrame,
     output_fluxes::DataFrame
 )
-
+    par_base = deepcopy(soil.par)
     for iday in 1:365*1
         println(iday)
 	    for ihour in 1:24
@@ -32,9 +32,9 @@ function annual_simulation!(
        	       plant.canopy.lai = _lai;
                soil.pH = _pH; 
 
-               plantsoilcn!(soil,plant,weather,lai,iday)
+               plantsoilcn!(par_base,soil,plant,weather,lai,iday)
         
-                output_plant[(iday-1)*24+ihour,"Cs"] = plant.leaf.Cs;
+                output_plant[(iday-1)*24+ihour,"Cs"] = plant.leaf.Cs; # soil.Nuptake; #plant.leaf.Cs;
                 output_plant[(iday-1)*24+ihour,"bm_c"] = plant.leaf.bm_c;
                 output_plant[(iday-1)*24+ihour,"bm_n"] = plant.leaf.bm_n;
                 output_plant[(iday-1)*24+ihour,"rCN"] = plant.leaf.rCN;

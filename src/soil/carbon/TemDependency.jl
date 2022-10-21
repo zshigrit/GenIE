@@ -45,56 +45,55 @@ function fT_CUE(T,Tref,slope,CUEref)
     return fT_CUE
 end
 
-function TMPdep!(soil::Soil,TMP) 
+function TMPdep!(par::SoilPar,TMP) 
     # par.fINP = par.fINP
     # par.Q10 = par.Q10
     # par.rNleach  = par.rNleach
     # par.bNup_VG = par.bNup_VG
     # par.fRa        = par.fRa
     # par.fpENZN   = par.fpENZN
-    par = soil.par;
-    par_base = soil.par_base;
-    par.vd_pomo = par_base.vd_pomo * TMPscalar("LIG", TMP)
-    par.vd_pomh = par_base.vd_pomh * TMPscalar("CEL", TMP)
-    par.ks_pomh = par_base.ks_pomh * TMPscalar("Km",TMP)
-    par.ks_pomo = par_base.ks_pomo * TMPscalar("Km",TMP)
-    par.vd_mom = par_base.vd_mom * TMPscalar("ENZ", TMP)
-    par.ks_mom = par_base.ks_mom * TMPscalar("Km",TMP)
-    par.Kp2u   = par_base.Kp2u * TMPscalar("Km", TMP)
-    par.Ku2p   = par_base.Ku2p * TMPscalar("Km", TMP)
-    par.Kdes   = par_base.Kdes * TMPscalar("Kdes", TMP)
-    par.Kads   = par_base.Kads * TMPscalar("Kads", TMP)
-    par.Vg     = par_base.Vg * TMPscalar("DOM", TMP)
-    par.Vm     = par_base.Vm * TMPscalar("MR", TMP)
-    par.KsDOM  = par_base.KsDOM * TMPscalar("Km", TMP)
+    par.vd_pomo = par.vd_pomo * TMPscalar("LIG", TMP)
+    par.vd_pomh = par.vd_pomh * TMPscalar("CEL", TMP)
+    par.ks_pomh = par.ks_pomh * TMPscalar("Km",TMP)
+    par.ks_pomo = par.ks_pomo * TMPscalar("Km",TMP)
+    par.vd_mom = par.vd_mom * TMPscalar("ENZ", TMP)
+    par.ks_mom = par.ks_mom * TMPscalar("Km",TMP)
+    par.Kp2u   = par.Kp2u * TMPscalar("Km", TMP)
+    par.Ku2p   = par.Ku2p * TMPscalar("Km", TMP)
+    par.Kdes   = par.Kdes * TMPscalar("Kdes", TMP)
+    par.Kads   = par.Kads * TMPscalar("Kads", TMP)
+    par.Vg     = par.Vg * TMPscalar("DOM", TMP)
+    par.Vm     = par.Vm * TMPscalar("MR", TMP)
+    par.KsDOM  = par.KsDOM * TMPscalar("Km", TMP)
 
-    CUE_ref    = par_base.Yg 
-    CUE_slope  = par_base.CUE_slope
+    CUE_ref    = par.Yg 
+    CUE_slope  = par.CUE_slope
     const_Tref = 20.0
     par.Yg = fT_CUE(TMP, const_Tref, CUE_slope, CUE_ref)
-    par.VmA2D = par_base.VmA2D * TMPscalar("MR", TMP)
-    par.VmD2A = par_base.VmD2A * TMPscalar("MR", TMP)
-    par.VNup_MB = par_base.VNup_MB * TMPscalar("NH4", TMP)
-    par.KsNH4_MB = par_base.KsNH4_MB * TMPscalar("Km", TMP)
-    par.KsNO3_MB = par_base.KsNO3_MB * TMPscalar("Km", TMP)
+    par.VmA2D = par.VmA2D * TMPscalar("MR", TMP)
+    par.VmD2A = par.VmD2A * TMPscalar("MR", TMP)
+    par.VNup_MB = par.VNup_MB * TMPscalar("NH4", TMP)
+    par.KsNH4_MB = par.KsNH4_MB * TMPscalar("Km", TMP)
+    par.KsNO3_MB = par.KsNO3_MB * TMPscalar("Km", TMP)
 
-    par.VNif = par_base.VNif * TMPscalar("NFIX", TMP)
-    par.KsNif = par_base.KsNif * TMPscalar("Km", TMP)
+    par.VNif = par.VNif * TMPscalar("NFIX", TMP)
+    par.KsNif = par.KsNif * TMPscalar("Km", TMP)
 
-    par.VNit = par_base.VNit * TMPscalar("NITRIF", TMP)
-    par.KsNit = par_base.KsNit * TMPscalar("Km", TMP)
+    par.VNit = par.VNit * TMPscalar("NITRIF", TMP)
+    par.KsNit = par.KsNit * TMPscalar("Km", TMP)
 
-    par.VDenit[1]  = par_base.VDenit[1] * TMPscalar("DENITRIF_NO3", TMP)
-    par.KsDenit[1] = par_base.KsDenit[1] * TMPscalar("Km", TMP)
-    par.VDenit[2]  = par_base.VDenit[2] * TMPscalar("DENITRIF_NO2", TMP)
-    par.KsDenit[2] = par_base.KsDenit[2] * TMPscalar("Km", TMP)
-    par.VDenit[3]  = par_base.VDenit[3] * TMPscalar("DENITRIF_NO", TMP)
-    par.KsDenit[3] = par_base.KsDenit[3] * TMPscalar("Km", TMP)
-    par.VDenit[4]  = par_base.VDenit[4] * TMPscalar("DENITRIF_N2O", TMP)
-    par.KsDenit[4] = par_base.KsDenit[4] * TMPscalar("Km", TMP)
+    par.VDenit[1]  = par.VDenit[1] * TMPscalar("DENITRIF_NO3", TMP)
+    par.KsDenit[1] = par.KsDenit[1] * TMPscalar("Km", TMP)
+    par.VDenit[2]  = par.VDenit[2] * TMPscalar("DENITRIF_NO2", TMP)
+    par.KsDenit[2] = par.KsDenit[2] * TMPscalar("Km", TMP)
+    par.VDenit[3]  = par.VDenit[3] * TMPscalar("DENITRIF_NO", TMP)
+    par.KsDenit[3] = par.KsDenit[3] * TMPscalar("Km", TMP)
+    par.VDenit[4]  = par.VDenit[4] * TMPscalar("DENITRIF_N2O", TMP)
+    par.KsDenit[4] = par.KsDenit[4] * TMPscalar("Km", TMP)
 
-    par.VNup_VG  = par_base.VNup_VG * TMPscalar("Nup_PLANT", TMP)
-    par.KsNH4_VG = par_base.KsNH4_VG * TMPscalar("Nup_PLANT", TMP)
-    par.KsNO3_VG = par_base.KsNO3_VG * TMPscalar("Nup_PLANT", TMP)
+    par.VNup_VG = par.VNup_VG * TMPscalar("Nup_PLANT", TMP)
+    par.KsNH4_VG = par.KsNH4_VG * TMPscalar("Nup_PLANT", TMP)
+    par.KsNO3_VG = par.KsNO3_VG * TMPscalar("Nup_PLANT", TMP)
+
 
 end

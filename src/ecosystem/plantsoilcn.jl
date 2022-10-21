@@ -4,6 +4,7 @@ note for ` biome,som = "MGC","SOL" `
 const biome,som = "MGC","SOL"; 
 const umol2mgC = 1.2*3.6*10^-3; #umolm-2s-1 to mgC/cm2/h
 function plantsoilcn!(
+	par_base::SoilPar,
 	soil::Soil,
 	plant::Plant,
 	weather::Weather,
@@ -24,7 +25,8 @@ function plantsoilcn!(
 	tmp = weather.Ts;
 	pH = soil.pH; 
 
-	TMPdep!(soil,tmp)
+	soil.par = deepcopy(par_base);
+	TMPdep!(soil.par,tmp)
 	SWCdep!(par_base,soil.par,swc,soil.vG,biome,som)
 	PHdep!(soil.par,pH)
 	
