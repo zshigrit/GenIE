@@ -10,7 +10,7 @@ function plantsoilcn!(
 	lai::Vector,
 	iday::Int
 )
-    leaf_temperature_dependence!(plant.leaf, weather.TaK)
+	leaf_temperature_dependence!(plant.leaf, weather.TaK)
     canopy_photosynthesis!(plant.leaf, plant.canopy, weather)
     nitrogen_limitation!(plant.leaf, plant.canopy, soil.Nuptake, lai, iday)
 	

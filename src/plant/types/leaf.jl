@@ -31,13 +31,13 @@ Base.@kwdef mutable struct Leaf{FT<:AbstractFloat}
     "fraction of Ca to derive Ci"
     fCi::FT = 0.87
     "leaf surface CO2 (initially zero)"
-    Cs::FT = 0
+    Cs::FT = 0 # initialized in initparameters.jl
     "inner leaf CO₂ concentration μmol/mol (ppm)"
-    Ci::FT = fCi * Cs 
+    Ci::FT = 0.0 # fCi * Cs # initialized in initparameters.jl
     "CO₂ compensation point@25°"
     Γ_star25::FT = 42.5
     "CO₂ compensation point"
-    Γ_star::FT = 0
+    Γ_star::FT = 0 # updated in dependence.jl
     "half saturation constant for CO₂"
     Kc25::FT = 460
     Kc::FT = 0

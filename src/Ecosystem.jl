@@ -20,7 +20,7 @@ module Ecosystem
     include("ecosystem/gpp2soil.jl")
     include("ecosystem/plantsoilcn.jl")
     include("ecosystem/annualsimulation.jl") # directly include a function
-
+    include("ecosystem/initparameters.jl")
 # some constants
     const umol2mgC = 1.2*3.6*10^-3; #umolm-2s-1 to mgC/cm2/h
 
@@ -37,7 +37,7 @@ module Ecosystem
     weather = Weather{FT}();
 
     # initial condition
-    plant.leaf.Cs = 400.0;
+    init_parameters!(plant,soil);
     soil.OC  = InitCPools();
     soil.CFlux = InitCFluxes();
     soil.ON,soil.MN,soil.enzymes_c, soil.enzymes_n = InitNPools(soil.OC, soil.par_add);
