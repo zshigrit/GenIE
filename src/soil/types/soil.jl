@@ -13,4 +13,5 @@ mutable struct Soil
 	CFlux::Fluxes
 	NFlux::Fluxes
 	Nuptake::Float64
+	Nuptakesum::Float64
 end

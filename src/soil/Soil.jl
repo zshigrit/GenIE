@@ -7,6 +7,7 @@ module SoilMod
     using UnPack
     using CSV 
     using DelimitedFiles
+    using ..PlantMod: Leaf
 
     # export public types 
     export SoilPar, Fluxes, Pools, vanGenuchtenPar
@@ -23,7 +24,7 @@ module SoilMod
     # export ModRunSL!
     
     export ENZNm,fNLimit_MB,NFixNitDen,fGasEfflux,NH4sorption!,NImmob,NO3NO2Leaching!,NPools!,fO2_scalar
-    export Overflow!,Rcn,InitNPools,InitCN
+    export Overflow!,Rcn,InitNPools,InitCN,NImmobAlt
 
     include("types/SoilPar.jl")
     include("types/Fluxes.jl")

@@ -8,8 +8,7 @@ module PlantMod
     include("types/leaf.jl")
     include("types/canopy.jl")
     include("types/weather.jl")
-    include("types/plant.jl"
-)
+    include("types/plant.jl")
 
     include("carbon/photosynthesis.jl")
     include("carbon/dependence.jl")

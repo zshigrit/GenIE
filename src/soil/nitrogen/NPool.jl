@@ -8,7 +8,7 @@ function NPools!(soil::Soil,
     cpools::Pools,npools::Pools,rCN::Pools,mnpools::MNPools,
     cfluxes::Fluxes,enzymes_n::Enzyme_N,enzymes_c::Enzyme_N,input_c,
     inp_cpools, inp_npools, inp_rCN, inp_mnpools, inp_enzymes_c, inp_enzymes_n,
-    GPP,SWC,TMP
+    GPP,SWC,TMP,leaf::Leaf #rCN_leaf,rCNmax_leaf,rCNmin_leaf
 )
 
     @unpack POMo,POMh,MOM,DOM,QOM,MBA,MBD,EPO,EPH,EM = cpools
@@ -51,8 +51,16 @@ function NPools!(soil::Soil,
 
     # immobilization: first time
     Nim_NH4,Nim_NO3,Nim = NImmob(par,inp_mnpools,inp_npools,phi) # microbes
-    Nim_NH4_VG,Nim_NO3_VG,Nim_VG = NImmob(par,par_add,inp_mnpools,GPP) # plants 
-    soil.Nuptake = Nim_VG
+    # Nim_NH4_VG,Nim_NO3_VG,Nim_VG = NImmob(par,par_add,inp_mnpools,GPP) # plants 
+
+    # ============= an alternate N uptake by vegetation replacing the above one ================
+    mnpools.NH4 = inp_mnpools.NH4 - Nim_NH4 + Nmn_MBA
+    mnpools.NO3 = inp_mnpools.NO3 - Nim_NO3 
+    # Nim_NH4_VG,Nim_NO3_VG,Nim_VG,Nuptake = NImmobAlt(par,par_add,mnpools,GPP,rCN_leaf,rCNmax_leaf,rCNmin_leaf) # plants
+    Nim_NH4_VG,Nim_NO3_VG,Nim_VG,Nuptake = NImmobAlt(par,par_add,mnpools,GPP,leaf) # plants
+
+    soil.Nuptake = Nuptake
+    # ============= an alternate N uptake by vegetation replacing the above one ================
     
 # ============= organic nitrogen balance ====================
     npools.POMo = inp_npools.POMo - pomo_dec + mba_pomo + litter_pomo

@@ -12,7 +12,7 @@ function plantsoilcn!(
 	iday::Int
 )
 	leaf_temperature_dependence!(plant.leaf, weather.TaK)
-	nitrogen_limitation!(plant.leaf, plant.canopy, soil.Nuptake, lai, iday)
+	nitrogen_limitation!(plant.leaf)
     canopy_photosynthesis!(plant.leaf, plant.canopy, weather)
     
     plant.gpp = plant.canopy.Ac * umol2mgC; # converted to mgC/cm2/h
@@ -38,7 +38,14 @@ function plantsoilcn!(
 	NPools!(soil,soil.par,soil.par_add,soil.par_der,soil.vG,soil.OC,soil.ON,soil.rCN,
 		soil.MN,soil.CFlux,soil.enzymes_n,soil.enzymes_c,inputC2Soil,
 		inp_cpools,inp_npools,inp_rCN,inp_mnpools,inp_enzymes_c,inp_enzymes_n,
-		gpp,swc,tmp)
+		gpp,swc,tmp,plant.leaf) # plant.leaf.rCN,plant.leaf.rCNmax,plant.leaf.rCNmin)
 	soil.rCN=Rcn(soil.OC,soil.ON)
+	plant.gppsum = plant.gppsum + plant.gpp*(1e-3*1e4)
+	soil.Nuptakesum =  soil.Nuptakesum + soil.Nuptake
+	if soil.Nuptakesum > 0
+		plant.leaf.rCN = plant.gppsum * 0.25 / soil.Nuptakesum # using NPP/N as the ratio index Here 0.24 indicating leaf allocation
+	else
+		plant.leaf.rCN = plant.leaf.rCN0
+	end
 
 end

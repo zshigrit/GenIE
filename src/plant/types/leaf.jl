@@ -15,15 +15,17 @@ Base.@kwdef mutable struct Leaf{FT<:AbstractFloat}
     
     Ncb0::FT = 0.13
     Ncb::FT = 0 # Ncb = Ncb0 * (rCN0/rCN)
-    NUEᵥₘ₂₅::FT = 47.3 * 6.25
+    NUEᵥₘ₂₅::FT = 47.3 * 6.25 # 47.3 * 6.25
     Vm25::FT = Ncb0*NUEᵥₘ₂₅ # will be modified by Ncb 
     "leaf biomass (g); * 0.45 for carbon"
     bm::FT = 0 # lai / sla
     bm_c::FT = 0 # bm*0.45 leaf carbon 
     bm_n::FT = 0 # leaf nitrogen
     "initial leaf CN ratio"
-    rCN0::FT = 20
-    rCN::FT  = 20
+    rCN0::FT = 30
+    rCN::FT  = 30
+    rCNmax::FT = 45
+    rCNmin::FT = 10
     "specific leaf area m²/g"
     sla::FT = 0.0085 # from TECO 
     "vcmax: μmol m⁻² s⁻¹ (initially zero)"

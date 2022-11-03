@@ -2,7 +2,6 @@
 
 module Ecosystem 
 #    const rad2photon = FT(4.6);
-    FT = Float64;
     include("plant/Plant.jl")
     include("soil/Soil.jl")
 
@@ -22,7 +21,8 @@ module Ecosystem
     include("ecosystem/annualsimulation.jl") # directly include a function
     include("ecosystem/initparameters.jl")
 # some constants
-    const umol2mgC = 1.2*3.6*10^-3; #umolm-2s-1 to mgC/cm2/h
+    # const umol2mgC = 1.2*3.6*10^-3; #umolm-2s-1 to mgC/cm2/h
+    FT = Float64;
 
 # model timespan
     nyear=10;
@@ -30,10 +30,10 @@ module Ecosystem
 
 # instantialize and intialize parameters/ conditions 
     # instantialize
-    plant   = Plant(0.0,[0.0,0.0,0.0],Canopy{FT}(),Leaf{FT}(),0.0);
+    plant   = Plant(0.0,0.0,[0.0,0.0,0.0],Canopy{FT}(),Leaf{FT}(),0.0);
     soil    = Soil(SoilPar(),AddPar(),DerPar(),0.0,vanGenuchtenPar(),Pools{FT}(),
             Pools{FT}(), Pools{FT}(),MNPools{FT}(),Enzyme_N{FT}(),Enzyme_N{FT}(),
-            Fluxes{FT}(),Fluxes{FT}(),0.0) 
+            Fluxes{FT}(),Fluxes{FT}(),0.0,0.0) 
     weather = Weather{FT}();
 
     # initial condition

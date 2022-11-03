@@ -38,16 +38,38 @@ function nitrogen_allocation!(
 end
 
 function nitrogen_limitation!(
-    leaf::Leaf{FT},
-    can::Canopy{FT},
-    nitrogen_uptake::FT,
-    lai::Vector,
-    iday::Int
+    leaf::Leaf{FT}
 ) where {FT<:AbstractFloat}
     @unpack Ncb0, rCN0, NUEᵥₘ₂₅ = leaf;
-    nitrogen_allocation!(leaf,can,nitrogen_uptake,lai,iday)
-    leaf.bm_n >0 ? leaf.rCN = leaf.bm_c/leaf.bm_n : leaf.rCN=leaf.rCN0; 
     leaf.Ncb = Ncb0 * (rCN0/leaf.rCN);
     leaf.Vm25 = leaf.Ncb * NUEᵥₘ₂₅;
     return nothing 
 end
+
+
+# function nitrogen_limitation!(
+#     leaf::Leaf{FT},
+#     can::Canopy{FT},
+#     nitrogen_uptake::FT,
+#     lai::Vector,
+#     iday::Int
+# ) where {FT<:AbstractFloat}
+#     @unpack Ncb0, rCN0, NUEᵥₘ₂₅ = leaf;
+#     # nitrogen_uptake = nitrogen_uptake *1.0e3; # converting mgN/cm3/h to gN/m3/h
+#     # nitrogen_allocation!(leaf,can,nitrogen_uptake,lai,iday)
+#     if leaf.bm_n >0  
+#         leaf.rCN = leaf.bm_c/leaf.bm_n 
+#     else
+#          leaf.rCN=leaf.rCN0; 
+#     end
+# #    if leaf.rCN > leaf.rCNmax 
+# #        leaf.rCN = leaf.rCNmax
+# #    end
+# #    if leaf.rCN < leaf.rCNmin 
+# #        leaf.rCN = leaf.rCNmin 
+# #    end
+
+#     leaf.Ncb = Ncb0 * (rCN0/leaf.rCN);
+#     leaf.Vm25 = leaf.Ncb * NUEᵥₘ₂₅;
+#     return nothing 
+# end

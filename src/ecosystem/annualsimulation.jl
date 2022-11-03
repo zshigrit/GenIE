@@ -13,7 +13,7 @@ function annual_simulation!(
 )
     par_base = deepcopy(soil.par)
     for iday in 1:365*1
-        println(iday)
+        println(iday,": ",plant.gppsum)
 	    for ihour in 1:24
                _tairK   = _weather.tair[(iday-1)*24+ihour] + FT(273.15);
                _rh      = _weather.RH[(iday-1)*24+ihour] / FT(100);
@@ -50,10 +50,10 @@ function annual_simulation!(
                 
 	    end
 
-        output_pools[iday,"Time"]  = iday
-        output_pools[iday,"cPOMh"] = soil.OC.POMh
+        output_pools[iday,"Time"]  = soil.MN.NH4 # iday
+        output_pools[iday,"cPOMh"] = soil.MN.NO3 # soil.OC.POMh
         output_pools[iday,"cPOMo"] = soil.OC.POMo
-        output_pools[iday,"cMOM"]  = soil.OC.MOM
+        output_pools[iday,"cMOM"]  = soil.ON.MOM
         output_pools[iday,"cDOM"]  = soil.OC.DOM
         output_pools[iday,"cQOM"]  = soil.OC.QOM
         output_pools[iday,"cMBA"]  = soil.OC.MBA

@@ -24,3 +24,28 @@ function NImmob(par::SoilPar,par_add::AddPar,
     Nim_VG     = Nim_NH4_VG + Nim_NO3_VG
     return Nim_NH4_VG,Nim_NO3_VG,Nim_VG
 end
+
+
+function NImmobAlt(par::SoilPar,par_add::AddPar,
+    mnpools::MNPools,GPP,leaf::Leaf) # plants
+
+    @unpack rCN,rCNmax,rCNmin = leaf 
+    scalar_conversion = 1e-3*1e6;  # mg N/cm3/ to g N/m3
+    Nuptake = GPP*(1e-3*1e4)/rCN;
+    if Nuptake > (mnpools.NH4 + mnpools.NO3)*scalar_conversion 
+        Nuptake = GPP/rCNmax 
+        if Nuptake > (mnpools.NH4 + mnpools.NO3)*scalar_conversion 
+            Nuptake = (mnpools.NH4 + mnpools.NO3)*scalar_conversion 
+        end
+    else
+        Nuptake = GPP/rCNmin 
+        if Nuptake > (mnpools.NH4 + mnpools.NO3)*scalar_conversion 
+            Nuptake = (mnpools.NH4 + mnpools.NO3)*scalar_conversion 
+        end
+    end
+
+Nim_NH4_VG = Nuptake * mnpools.NH4 / (mnpools.NH4+mnpools.NO3) / scalar_conversion
+Nim_NO3_VG = Nuptake * mnpools.NO3 / (mnpools.NH4+mnpools.NO3) / scalar_conversion
+Nim_VG     = Nuptake / scalar_conversion
+return Nim_NH4_VG,Nim_NO3_VG,Nim_VG, Nuptake
+end
