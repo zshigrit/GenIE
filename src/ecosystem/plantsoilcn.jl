@@ -7,9 +7,7 @@ function plantsoilcn!(
 	par_base::SoilPar,
 	soil::Soil,
 	plant::Plant,
-	weather::Weather,
-	lai::Vector,
-	iday::Int
+	weather::Weather
 )
 	leaf_temperature_dependence!(plant.leaf, weather.TaK)
 	nitrogen_limitation!(plant.leaf)

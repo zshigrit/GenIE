@@ -25,7 +25,7 @@ module Ecosystem
     FT = Float64;
 
 # model timespan
-    nyear=10;
+    nyear=5;
     ncycle=1;
 
 # instantialize and intialize parameters/ conditions 
