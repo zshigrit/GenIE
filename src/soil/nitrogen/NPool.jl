@@ -57,7 +57,7 @@ function NPools!(soil::Soil,
     mnpools.NH4 = inp_mnpools.NH4 - Nim_NH4 + Nmn_MBA
     mnpools.NO3 = inp_mnpools.NO3 - Nim_NO3 
     # Nim_NH4_VG,Nim_NO3_VG,Nim_VG,Nuptake = NImmobAlt(par,par_add,mnpools,GPP,rCN_leaf,rCNmax_leaf,rCNmin_leaf) # plants
-    Nim_NH4_VG,Nim_NO3_VG,Nim_VG,Nuptake = NImmobAlt(par,par_add,mnpools,GPP,leaf) # plants
+    Nim_NH4_VG,Nim_NO3_VG,Nim_VG,Nuptake = NImmobAlt(par,par_add,mnpools,GPP,leaf) 
 
     soil.Nuptake = Nuptake
     # ============= an alternate N uptake by vegetation replacing the above one ================

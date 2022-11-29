@@ -58,7 +58,7 @@ function InitCInputs(ilayer,par)
     allocationcoeff = [0.35,0.3,0.2,0.1,0.05,1.0]
 
     # SIN_day_str = readlines("../../../test/SIN_day.dat") # unit: mgC-cm2-d
-    abs_path = "/Users/zhengshi/Documents/OneDrive - University of Oklahoma/my_git/ecosystem_julia/test/"
+    abs_path = "../test/"
     SIN_day_str = readlines(abs_path*"SIN_day.dat") 
 
     SIN_day = parse.(Float64, SIN_day_str) # string to numeric
@@ -133,7 +133,7 @@ function InitCInputs(par::SoilPar)
 
 
     # SIN_day_str = readlines("../../../test/SIN_day.dat") # unit: mgC-cm2-d
-    abs_path = "/Users/zhengshi/Documents/OneDrive - University of Oklahoma/my_git/GenIE/test/"
+    abs_path = "../test/"
     SIN_day_str = readlines(abs_path*"SIN_day.dat") 
 
     SIN_day = parse.(Float64, SIN_day_str) # string to numeric
@@ -163,7 +163,7 @@ end
 function inp_gpp()
 
     # SIN_day_str = readlines("../../../test/SIN_day.dat") # unit: mgC-cm2-d
-    abs_path = "/Users/zhengshi/Documents/OneDrive - University of Oklahoma/my_git/GenIE/test/"
+    abs_path = "../test/"
     SIN_day_str = readlines(abs_path*"SIN_day.dat") 
 
     SIN_day = parse.(Float64, SIN_day_str) # string to numeric
@@ -177,7 +177,7 @@ function inp_gpp()
 end
 
 function inp_swc()
-    abs_path = "/Users/zhengshi/Documents/OneDrive - University of Oklahoma/my_git/GenIE/test/"
+    abs_path = "../test/"
     SIN_day_str = readlines(abs_path*"SWC_day.dat") 
     # SIN_day_str = readlines("./test/SWC_day.dat") 
 
@@ -192,7 +192,7 @@ end
 
 function inp_stp()
     # SIN_day_str = readlines("../../../test/STP_day.dat") 
-    abs_path = "/Users/zhengshi/Documents/OneDrive - University of Oklahoma/my_git/GenIE/test/"
+    abs_path = "../test/"
     SIN_day_str = readlines(abs_path*"STP_day.dat") 
 
     SIN_day = parse.(Float64, SIN_day_str) # string to numeric
@@ -205,8 +205,8 @@ function inp_stp()
 end
 
 function inp_ph()
-    abs_path = "/Users/zhengshi/Documents/OneDrive - University of Oklahoma/my_git/GenIE/test/"
-    SIN_month = readdlm(abs_path*"SPH_mon.dat", '\t', skipstart=1)
+    abs_path = "../test/"
+    SIN_month = readdlm(abs_path*"SPH_mon.dat", ',', skipstart=1)
     SIN_hour = SIN_month[1:end,3]
     return SIN_hour
 end

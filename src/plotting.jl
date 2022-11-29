@@ -21,3 +21,5 @@ df2 = CSV.read("output_pools.csv",DataFrame);
 #h3 = plot(df.rCN, reuse=false)
 
 #display(h3)
+csv.read("file.csv",header=9,DataFrame)
+df1 = CSV.read("POWER_Point_Hourly_20210101_20210331_047d0000N_095d0000W_LST.csv",DataFrame;header=11,skipto=18,limit=100,ntasks=1);

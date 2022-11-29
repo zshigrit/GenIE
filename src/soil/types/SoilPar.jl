@@ -55,7 +55,7 @@ Base.@kwdef mutable struct SoilPar
     KsNH4_VG::Float64  = 0.0012
     KsNO3_VG::Float64  = 0.0018
     fpENZN::Float64    = 1.0
-    VNif::Float64      = 0.0635041
+    VNif::Float64      = 0.0635041 #*10000.0
     VNit::Float64      = 185.28188371
     VDenit::Vector{Float64} = [0.86952628,0.86952628,0.86952628,0.86952628]
     # VDenit(1) = 0.86952628
