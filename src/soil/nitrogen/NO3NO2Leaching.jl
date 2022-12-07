@@ -25,4 +25,5 @@ function NO3NO2Leaching!(mnpools::MNPools,par_der::DerPar)
     NO32_Leaching = NO3_Leaching + NO2_Leaching 
     mnpools.NO3 = mnpools.NO3 - NO3_Leaching
     mnpools.NO2 = mnpools.NO2 - NO2_Leaching
+    return nothing 
 end

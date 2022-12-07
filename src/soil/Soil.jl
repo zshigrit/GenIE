@@ -24,6 +24,7 @@ module SoilMod
     # export ModRunSL!
     
     export ENZNm,fNLimit_MB,NFixNitDen,fGasEfflux,NH4sorption!,NImmob,NO3NO2Leaching!,NPools!,fO2_scalar
+    export fracNO3_Leaching
     export Overflow!,Rcn,InitNPools,InitCN,NImmobAlt
 
     include("types/SoilPar.jl")
@@ -38,6 +39,11 @@ module SoilMod
     include("types/Enzyme_N.jl")
     include("types/MNPools.jl")
     include("types/soil.jl")
+
+    include("types/OPPar.jl")
+    include("types/IPPar.jl")
+    include("types/MPPools.jl")
+
 
     include("carbon/WaterDependency.jl")
     include("carbon/MM.jl")

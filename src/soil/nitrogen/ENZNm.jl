@@ -1,3 +1,6 @@
+"""
+enzymes for nitrification, denitrification, N fixation
+"""
 function ENZNm(par::SoilPar,mnpools::MNPools,enzymes_c::Enzyme_N,rtp1)
     frENZNm = Array{Float64}(undef, 6) 
     frENZNm[1] = mnpools.N2/par.KsNif
@@ -14,8 +17,8 @@ function ENZNm(par::SoilPar,mnpools::MNPools,enzymes_c::Enzyme_N,rtp1)
     frENZNm[5] = frENZNm[5]/sum(frENZNm)
     frENZNm[6] = frENZNm[6]/sum(frENZNm)
 
-    MBA_ENZNm = frENZNm * rtp1
-    ENZNm_DOM = par.rENZM * enzymes_c.ENZNm
+    MBA_ENZNm = frENZNm * rtp1 # enzyme synthesis by MBA
+    ENZNm_DOM = par.rENZM * enzymes_c.ENZNm # enzyme turnover into DOM 
 
     return MBA_ENZNm, ENZNm_DOM
     
